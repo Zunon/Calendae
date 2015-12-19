@@ -3,7 +3,7 @@ package gr.ae;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class GUI {
+public class CLI {
 	public static void main(String[]args) {
 		try(Scanner scr = new Scanner(System.in)) {
 			System.out.println(
@@ -41,7 +41,7 @@ public class GUI {
 		System.out.println("Enter the Zwami date:[MCDYmd]");
 		String zDate = scr.nextLine();
 		System.out.println(Zwami.toGreg(zDate).toString());
-		GUI.main(null);
+		CLI.main(null);
 	}
 
 	private static void gregToZwami(Scanner scr) {
@@ -61,7 +61,7 @@ public class GUI {
 			input = LocalDate.of(year, month, dayOfMonth);
 		
 		System.out.println("That day in Zwami is: " + Zwami.toZwami(input));
-		GUI.main(null);
+		CLI.main(null);
 	}
 	
 	
