@@ -5,42 +5,40 @@ import java.util.Scanner;
 
 public class CLI {
 	public static void main(String[]args) {
-		try(Scanner scr = new Scanner(System.in)) {
-			System.out.println(
-				"Welcome to Greg.io, the calendar converter\n"+
-				"    1 - Gregorian to Zwami conversion\n"+
-				"    2 - Zwami to Gregorian conversion\n"+
-				"    3 - Exit"
-				);
-			int
-				choice = 0;
-			while(choice < 1 || choice > 3) {
-				System.out.println("Input your choice:");
-				choice = scr.nextInt();
-				if(choice >= 1 && choice <= 3) {
-					break;
-				}
-				System.out.println("Invalid input");
-			}
-			switch(choice) {
-			case 1:
-				gregToZwami(scr);
+		Scanner scr = new Scanner(System.in);
+		System.out.println(
+			"Welcome to Greg.io, the calendar converter\n"+
+			"    1 - Gregorian to Zwami conversion\n"+
+			"    2 - Zwami to Gregorian conversion\n"+
+			"    3 - Exit"
+			);
+		int
+			choice = 0;
+		while(choice < 1 || choice > 3) {
+			System.out.println("Input your choice:");
+			choice = scr.nextInt();
+			if(choice >= 1 && choice <= 3) {
 				break;
-			case 2:
-				zwamiToGreg(scr);
-				break;
-			case 3:
-				System.exit(0);
 			}
-		} catch(Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println("Invalid input\n");
+		}
+		switch(choice) {
+		case 1:
+			gregToZwami(scr);
+			break;
+		case 2:
+			zwamiToGreg(scr);
+			break;
+		case 3:
+			scr.close();
+			System.exit(0);
 		}
 	}
 
 	private static void zwamiToGreg(Scanner scr) {
 		System.out.println("Enter the Zwami date:[MCDYmd]");
-		String zDate = scr.nextLine();
-		System.out.println(Zwami.toGreg(zDate).toString());
+		String zDate = scr.next("\\w+");
+		System.out.println(zDate+" corresponds to "+Zwami.toGreg(zDate).toString()+"\n");
 		CLI.main(null);
 	}
 
@@ -60,7 +58,7 @@ public class CLI {
 		LocalDate
 			input = LocalDate.of(year, month, dayOfMonth);
 		
-		System.out.println("That day in Zwami is: " + Zwami.toZwami(input));
+		System.out.println("That day in Zwami is: " + Zwami.toZwami(input)+"\n");
 		CLI.main(null);
 	}
 	
