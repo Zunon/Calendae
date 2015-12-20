@@ -1,5 +1,7 @@
 package calend.ae;
 
+import io.zunon.LibZwami;
+
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -38,7 +40,7 @@ public class CLI {
 	private static void zwamiToGreg(Scanner scr) {
 		System.out.println("Enter the Zwami date:[MCDYmd]");
 		String zDate = scr.next("\\w+");
-		System.out.println(zDate+" corresponds to "+Zwami.toGreg(zDate).toString()+"\n");
+		System.out.println(zDate+" corresponds to "+LibZwami.toGreg(zDate).toString()+"\n");
 		CLI.main(null);
 	}
 
@@ -58,7 +60,7 @@ public class CLI {
 		LocalDate
 			input = LocalDate.of(year, month, dayOfMonth);
 		
-		System.out.println("That day in Zwami is: " + Zwami.toZwami(input)+"\n");
+		System.out.println("That day in Zwami is: " + LibZwami.toZwami(input)+"\n");
 		CLI.main(null);
 	}
 	

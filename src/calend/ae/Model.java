@@ -1,5 +1,7 @@
 package calend.ae;
 
+import io.zunon.LibZwami;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -45,7 +47,7 @@ public class Model extends Application {
 		LocalDate
 			date = LocalDate.of(year, month, dayOfMonth);
 		String
-			result = Zwami.toZwami(date);
+			result = LibZwami.toZwami(date);
 		
 		resultGToZ.setText("The date in Zwami is: " + result);
 	}
@@ -55,7 +57,7 @@ public class Model extends Application {
 			zwami = zwamiTextField.getText(),
 			result = "";
 		LocalDate
-			date = Zwami.toGreg(zwami);
+			date = LibZwami.toGreg(zwami);
 		DateTimeFormatter
 			iso = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL);
 		result = date.format(iso);
