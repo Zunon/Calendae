@@ -1,7 +1,5 @@
 package calend.ae;
 
-import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,9 +13,9 @@ public class Model extends Application {
 	}
 	
 	@Override
-	public void start(Stage stg) throws IOException{
-		stg.setTitle("Grae");
+	public void start(Stage stg) throws Exception{
 		Parent tabs = FXMLLoader.load(getClass().getResource("View.fxml"));
+		stg.setTitle("Hello World");
 		stg.setScene(new Scene(tabs, 450, 250));
 		stg.show();
 	}
