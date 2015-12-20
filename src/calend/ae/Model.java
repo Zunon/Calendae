@@ -33,6 +33,7 @@ public class Model extends Application {
 		Parent tabs = FXMLLoader.load(getClass().getResource("View.fxml"));
 		stg.setTitle("Calendae");
 		stg.setScene(new Scene(tabs, 450, 250));
+		stg.setResizable(false);
 		stg.show();
 	}
 	

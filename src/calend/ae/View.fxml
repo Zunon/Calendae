@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.Button?>
@@ -30,4 +31,8 @@
 			</GridPane>
 		</Tab>
 	</tabs>
+	
+	<stylesheets>
+		<URL value="@Style.css"/>
+	</stylesheets>
 </TabPane>
