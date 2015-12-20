@@ -1,5 +1,5 @@
-# Gr.ae
-Gr.ae, (pronounced 'Grey') is a calendar converter is a tool that allows you to convert dates from one calendar to another, it was created to convert between Gregorian and a constructed date format Zwami but there are plans to expand support to all possible calendars including ancient ones.
+# Calendae
+Calenday, (pronounced 'kal-in-day') is a calendar converter is a tool that allows you to convert dates from one calendar to another, it was created to convert between Gregorian and a constructed date format Zwami but there are plans to expand support to all possible calendars including ancient ones.
 # Zwami
 *Zwami* is a constructed date format created and optimized for ease-of-organization and size-efficiency, it only uses six characters and it is easily organised by alphanumerical order.
 
