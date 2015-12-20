@@ -2,6 +2,7 @@
 bin/
 *.log
 *.project
+executables/config.xml
 
 # Windows image file caches
 Thumbs.db
