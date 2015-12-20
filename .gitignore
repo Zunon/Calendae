@@ -1,5 +1,6 @@
-# .class files
+# junk files
 bin/
+*.log
 
 # Windows image file caches
 Thumbs.db
