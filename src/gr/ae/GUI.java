@@ -1,6 +1,8 @@
 package gr.ae;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 import javafx.application.Application;
 import javafx.event.Event;
@@ -76,7 +78,12 @@ public class GUI extends Application {
 	private static void onClickZToG(Event e) {
 		String
 			zwami = zwt.getText(),
-			result = Zwami.toGreg(zwami).toString();
+			result = "";
+		LocalDate
+			date = Zwami.toGreg(zwami);
+		DateTimeFormatter
+			iso = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL);
+		result = date.format(iso);
 		
 		resZToG.setText(zwami + " corresponds to " + result);
 	}
