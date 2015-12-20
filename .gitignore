@@ -1,6 +1,7 @@
 # junk files
 .settings/
 bin/
+*.classpath
 *.log
 *.project
 executables/config.xml
