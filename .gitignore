@@ -1,6 +1,7 @@
 # junk files
 bin/
 *.log
+*.project
 
 # Windows image file caches
 Thumbs.db
