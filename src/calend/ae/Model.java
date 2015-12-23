@@ -85,15 +85,26 @@ public class Model extends Application implements Initializable {
 	}
 	
 	public void onClickHToZ(Event e) {
-		// TODO add conversion
+		LocalDate
+			hijri = dateHijri.getValue();
+		String
+			resultText = LibZwami.toZwami(hijri);
+		result.setText("The date in Zwami: "+resultText);
 	}
 	
 	public void onClickHToG(Event e) {
-		// TODO add conversion
+		LocalDate
+			hijri = dateHijri.getValue();
+		String
+			resultText = hijri.format(iso);
+		result.setText("The date in Gregorian: "+resultText);
 	}
 	
 	public void onClickZToH(Event e) {
-		// TODO add conversion
+		String
+			zwami = zwamiTextField.getText(),
+			resultText = LibZwami.toGreg(zwami).format(hijri);
+		result.setText("The date in Hijri: "+resultText);
 	}
 	
 	public void onClickZToG(Event e) {
@@ -104,7 +115,7 @@ public class Model extends Application implements Initializable {
 			date = LibZwami.toGreg(zwami);
 		resultText = date.format(iso);
 		
-		result.setText(zwami + " corresponds to " + resultText);
+		result.setText("The date in Gregorian: " + resultText);
 	}
 	
 	public void changeGridPanes(Event e) {
