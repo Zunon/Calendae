@@ -2,6 +2,7 @@ package calend.ae;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.chrono.Chronology;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.ArrayList;
@@ -43,7 +44,6 @@ public class Model extends Application implements Initializable {
 		fromGregorian,
 		fromZwami,
 		root;
-	// TODO use one universal label instead of three
 	public Label
 		result;
 	public static String
@@ -74,7 +74,13 @@ public class Model extends Application implements Initializable {
 	}
 	
 	public void onClickGToH(Event e){
-		// TODO add conversion
+		LocalDate
+			greg = dateGreg.getValue();
+		DateTimeFormatter
+			hijri = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).withChronology(Chronology.of("Hijrah-umalqura"));
+		String
+			resultText = greg.format(hijri);
+		result.setText("The date in Hijri is: "+resultText);
 	}
 	
 	public void onClickHToZ(Event e) {
