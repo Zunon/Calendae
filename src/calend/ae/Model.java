@@ -35,6 +35,8 @@ public class Model extends Application implements Initializable {
 		monthTextField,
 		dayTextField,
 		zwamiTextField;
+	public static String
+		hidden="Gregorian";
 		
 	public static void main(String[]args) {
 		launch(args);
@@ -78,6 +80,29 @@ public class Model extends Application implements Initializable {
 		result = date.format(iso);
 		
 		resultZToG.setText(zwami + " corresponds to " + result);
+	}
+	
+	public void changeGridPanes(Event e) {
+		String
+			newValue = from.getValue();
+		switch(newValue) {
+		case "Gregorian":
+			fromZwami.setVisible(false);
+			fromGreg.setVisible(true);
+			to.getItems().remove("Gregorian");
+			to.getItems().add(hidden);
+			to.setValue(hidden);
+			hidden = "Gregorian";
+			break;
+		case "Zwami":
+			fromZwami.setVisible(true);
+			fromGreg.setVisible(false);
+			to.getItems().remove("Zwami");
+			to.getItems().add(hidden);
+			to.setValue(hidden);
+			hidden = "Zwami";
+			break;
+		}
 	}
 
 }

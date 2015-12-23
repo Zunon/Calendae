@@ -12,7 +12,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 
 <GridPane alignment="CENTER" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml" fx:controller="calend.ae.Model">
-	<ChoiceBox value="Gregorian" fx:id="from" GridPane.columnIndex="0" GridPane.rowIndex="0">
+	<ChoiceBox onAction="#changeGridPanes" value="Gregorian" fx:id="from" GridPane.columnIndex="0" GridPane.rowIndex="0">
 		<items>
 			<FXCollections fx:factory="observableArrayList">
 				<String fx:value="Gregorian" />
@@ -28,7 +28,7 @@
 		</items>
 	</ChoiceBox>
 	
-	<GridPane GridPane.columnIndex="0" GridPane.rowIndex="1" fx:id="fromGreg" alignment="CENTER" hgap="10" vgap="10">
+	<GridPane GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2" fx:id="fromGreg" alignment="CENTER" hgap="10" vgap="10">
 		<Label fx:id="resultGToZ" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.rowSpan="2" GridPane.columnSpan="2"></Label>
 		<Label text="Year: " GridPane.columnIndex="0" GridPane.rowIndex="1"></Label>
 		<TextField fx:id="yearTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"></TextField>
@@ -38,7 +38,7 @@
 		<TextField fx:id="dayTextField" GridPane.columnIndex="1" GridPane.rowIndex="3"></TextField>
 		<Button onAction="#onClickGToZ" text="Submit" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2"></Button>
 	</GridPane>
-	<GridPane GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.rowSpan="2" fx:id="fromZwami" alignment="CENTER" hgap="10" vgap="10">
+	<GridPane GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2" fx:id="fromZwami" alignment="CENTER" hgap="10" vgap="10">
 		<Label fx:id="resultZToG" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"></Label>
 		<Label text="Zwami: " GridPane.columnIndex="0" GridPane.rowIndex="1"></Label>
 		<TextField fx:id="zwamiTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"></TextField>
