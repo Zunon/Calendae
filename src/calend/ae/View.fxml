@@ -22,7 +22,7 @@
 			</FXCollections>
 		</items>
 	</ChoiceBox>
-	<ChoiceBox value="Zwami" fx:id="to" GridPane.columnIndex="1" GridPane.rowIndex="0">
+	<ChoiceBox onAction="#showAndHideButtons" value="Zwami" fx:id="to" GridPane.columnIndex="1" GridPane.rowIndex="0">
 		<items>
 			<FXCollections fx:factory="observableArrayList">
 				<String fx:value="Zwami" />
@@ -30,23 +30,20 @@
 			</FXCollections>
 		</items>
 	</ChoiceBox>
-	
-	<GridPane GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2" fx:id="fromGregorian" alignment="CENTER" hgap="10" vgap="10">
-		<Label fx:id="resultGregorian" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"></Label>
+	<Label fx:id="result" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="3"></Label>
+	<GridPane GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2" fx:id="fromGregorian" alignment="CENTER" hgap="10" vgap="10">
 		<Label text="Date: " GridPane.columnIndex="0" GridPane.rowIndex="1"></Label>
 		<DatePicker fx:id="dateGreg" GridPane.columnIndex="1" GridPane.rowIndex="1"></DatePicker>
 		<Button fx:id="GregorianToZwami" onAction="#onClickGToZ" text="Submit" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2"></Button>
 		<Button fx:id="GregorianToHijri" visible="false" onAction="#onClickGToH" text="Submit" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2"></Button>
 	</GridPane>
-	<GridPane visible="false" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2" fx:id="fromZwami" alignment="CENTER" hgap="10" vgap="10">
-		<Label fx:id="resultZwami" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"></Label>
+	<GridPane visible="false" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2" fx:id="fromZwami" alignment="CENTER" hgap="10" vgap="10">
 		<Label text="Zwami: " GridPane.columnIndex="0" GridPane.rowIndex="1"></Label>
 		<TextField fx:id="zwamiTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"></TextField>
 		<Button fx:id="ZwamiToGregorian" visible="false" onAction="#onClickZToG" text="Submit" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2"></Button>
 		<Button fx:id="ZwamiToHijri" visible="false" onAction="#onClickZToH" text="Submit" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2"></Button>
 	</GridPane>
-	<GridPane visible="false" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2" fx:id="fromHijri" alignment="CENTER" hgap="10" vgap="10">
-		<Label fx:id="resultHijri" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"></Label>
+	<GridPane visible="false" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2" fx:id="fromHijri" alignment="CENTER" hgap="10" vgap="10">
 		<Label text="Date: " GridPane.columnIndex="0" GridPane.rowIndex="1"></Label>
 		<DatePicker fx:id="dateHijri" GridPane.columnIndex="1" GridPane.rowIndex="1"></DatePicker>
 		<Button fx:id="HijriToZwami" visible="false" onAction="#onClickHToZ" text="Submit" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2"></Button>

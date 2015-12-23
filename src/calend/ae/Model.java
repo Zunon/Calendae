@@ -12,7 +12,6 @@ import javafx.application.Application;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -25,7 +24,7 @@ import javafx.stage.Stage;
 
 public class Model extends Application implements Initializable {
 
-	private ArrayList<Node>
+	private ArrayList<GridPane>
 		panes = new ArrayList<>();
 	public Button
 		GregorianToHijri,
@@ -38,16 +37,15 @@ public class Model extends Application implements Initializable {
 		from,
 		to;
 	public DatePicker
-		dateGreg;
+		dateGreg,
+		dateHijri;
 	public GridPane
 		fromGregorian,
 		fromZwami,
 		root;
 	// TODO use one universal label instead of three
 	public Label
-		resultGregorian,
-		resultHijri,
-		resultZwami;
+		result;
 	public static String
 		hidden = "Gregorian";
 	public TextField
@@ -70,9 +68,9 @@ public class Model extends Application implements Initializable {
 		LocalDate
 			date = dateGreg.getValue();
 		String
-			result = LibZwami.toZwami(date);
+			resultText = LibZwami.toZwami(date);
 		
-		resultGregorian.setText("The date in Zwami is: " + result);
+		result.setText("The date in Zwami is: " + resultText);
 	}
 	
 	public void onClickGToH(Event e){
@@ -94,20 +92,21 @@ public class Model extends Application implements Initializable {
 	public void onClickZToG(Event e) {
 		String
 			zwami = zwamiTextField.getText(),
-			result = "";
+			resultText = "";
 		LocalDate
 			date = LibZwami.toGreg(zwami);
 		DateTimeFormatter
-			iso = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL);
-		result = date.format(iso);
+			iso = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG);
+		resultText = date.format(iso);
 		
-		resultZwami.setText(zwami + " corresponds to " + result);
+		result.setText(zwami + " corresponds to " + resultText);
 	}
 	
 	public void changeGridPanes(Event e) {
 		String
 			newValue = from.getValue();
 		updateStage(newValue);
+		showAndHideButtons();
 	}
 
 	private void updateStage(String newInput) {
@@ -119,12 +118,27 @@ public class Model extends Application implements Initializable {
 		to.setValue(hidden);
 		hidden = newInput;
 	}
+	
+	public void showAndHideButtons(Event e) {
+		showAndHideButtons();
+	}
+	private void showAndHideButtons() {
+		ArrayList<Button>
+			buttons = new ArrayList<>();
+		panes.forEach(
+			    e -> e.getChildren().stream()
+									.filter(f -> f.getClass().getSimpleName().equals("Button"))
+									.forEach(f -> buttons.add((Button)f)));
+		buttons.forEach(button -> {
+			button.setVisible(button.getId().startsWith(from.getValue()) && button.getId().endsWith(to.getValue()));
+		});
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		root.getChildren().stream()
 						  .filter(e -> e.getClass().getSimpleName().equals("GridPane"))
-						  .forEach(panes::add);
+						  .forEach(e -> panes.add((GridPane)e));
 	}
 
 }
