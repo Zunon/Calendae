@@ -1,38 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import java.net.URL?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ChoiceBox?>
 
-<TabPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml" fx:controller="calend.ae.Model">
-	<tabs>
-		<Tab closable="false" text="To Zwami">
-			<GridPane alignment="CENTER" hgap="10" vgap="10">
-				<Label fx:id="resultGToZ" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"></Label>
-				<Label text="Year: " GridPane.columnIndex="0" GridPane.rowIndex="1"></Label>
-				<TextField fx:id="yearTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"></TextField>
-				<Label text="Month: " GridPane.columnIndex="0" GridPane.rowIndex="2"></Label>
-				<Label text="Day: " GridPane.columnIndex="0" GridPane.rowIndex="3"></Label>
-				<TextField fx:id="monthTextField" GridPane.columnIndex="1" GridPane.rowIndex="2"></TextField>
-				<TextField fx:id="dayTextField" GridPane.columnIndex="1" GridPane.rowIndex="3"></TextField>
-				<Button onAction="#onClickGToZ" text="Submit" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2"></Button>
-			</GridPane>
-		</Tab>
-		<Tab closable="false" text="To Gregorian">
-			<GridPane alignment="CENTER" hgap="10" vgap="10">
-				<Label fx:id="resultZToG" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"></Label>
-				<Label text="Zwami: " GridPane.columnIndex="0" GridPane.rowIndex="1"></Label>
-				<TextField fx:id="zwamiTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"></TextField>
-				<Button onAction="#onClickZToG" text="Submit" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2"></Button>
-			</GridPane>
-		</Tab>
-	</tabs>
+<GridPane alignment="CENTER" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml" fx:controller="calend.ae.Model">
+	<ChoiceBox onAction="#changeGridPanes" value="Gregorian" fx:id="from" GridPane.columnIndex="0" GridPane.rowIndex="0">
+		<items>
+			<FXCollections fx:factory="observableArrayList">
+				<String fx:value="Gregorian" />
+				<String fx:value="Zwami" />
+			</FXCollections>
+		</items>
+	</ChoiceBox>
+	<ChoiceBox value="Zwami" fx:id="to" GridPane.columnIndex="1" GridPane.rowIndex="0">
+		<items>
+			<FXCollections fx:factory="observableArrayList">
+				<String fx:value="Zwami" />
+			</FXCollections>
+		</items>
+	</ChoiceBox>
+	
+	<GridPane GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2" fx:id="fromGreg" alignment="CENTER" hgap="10" vgap="10">
+		<Label fx:id="resultGToZ" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.rowSpan="2" GridPane.columnSpan="2"></Label>
+		<Label text="Year: " GridPane.columnIndex="0" GridPane.rowIndex="1"></Label>
+		<TextField fx:id="yearTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"></TextField>
+		<Label text="Month: " GridPane.columnIndex="0" GridPane.rowIndex="2"></Label>
+		<Label text="Day: " GridPane.columnIndex="0" GridPane.rowIndex="3"></Label>
+		<TextField fx:id="monthTextField" GridPane.columnIndex="1" GridPane.rowIndex="2"></TextField>
+		<TextField fx:id="dayTextField" GridPane.columnIndex="1" GridPane.rowIndex="3"></TextField>
+		<Button onAction="#onClickGToZ" text="Submit" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2"></Button>
+	</GridPane>
+	<GridPane GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2" fx:id="fromZwami" alignment="CENTER" hgap="10" vgap="10">
+		<Label fx:id="resultZToG" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"></Label>
+		<Label text="Zwami: " GridPane.columnIndex="0" GridPane.rowIndex="1"></Label>
+		<TextField fx:id="zwamiTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"></TextField>
+		<Button onAction="#onClickZToG" text="Submit" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2"></Button>
+	</GridPane>
 	
 	<stylesheets>
 		<URL value="@Style.css"/>
 	</stylesheets>
-</TabPane>
+</GridPane>

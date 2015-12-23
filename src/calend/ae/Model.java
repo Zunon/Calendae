@@ -1,22 +1,32 @@
 package calend.ae;
 
-import io.zunon.LibZwami;
-
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.ResourceBundle;
 
+import io.zunon.LibZwami;
 import javafx.application.Application;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class Model extends Application {
+public class Model extends Application implements Initializable {
 	
+	public ChoiceBox<String>
+		from,
+		to;
+	public GridPane
+		fromGreg,
+		fromZwami;
 	public Label
 		resultGToZ,
 		resultZToG;
@@ -25,9 +35,16 @@ public class Model extends Application {
 		monthTextField,
 		dayTextField,
 		zwamiTextField;
+	public static String
+		hidden="Gregorian";
 		
 	public static void main(String[]args) {
 		launch(args);
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		fromZwami.setVisible(false);
 	}
 	
 	@Override
@@ -64,4 +81,28 @@ public class Model extends Application {
 		
 		resultZToG.setText(zwami + " corresponds to " + result);
 	}
+	
+	public void changeGridPanes(Event e) {
+		String
+			newValue = from.getValue();
+		switch(newValue) {
+		case "Gregorian":
+			fromZwami.setVisible(false);
+			fromGreg.setVisible(true);
+			to.getItems().remove("Gregorian");
+			to.getItems().add(hidden);
+			to.setValue(hidden);
+			hidden = "Gregorian";
+			break;
+		case "Zwami":
+			fromZwami.setVisible(true);
+			fromGreg.setVisible(false);
+			to.getItems().remove("Zwami");
+			to.getItems().add(hidden);
+			to.setValue(hidden);
+			hidden = "Zwami";
+			break;
+		}
+	}
+
 }
