@@ -50,6 +50,9 @@ public class Model extends Application implements Initializable {
 		hidden = "Gregorian";
 	public TextField
 		zwamiTextField;
+	private DateTimeFormatter
+		hijri = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).withChronology(Chronology.of("Hijrah-umalqura")),
+		iso = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG);
 	
 	public static void main(String[]args) {
 		launch(args);
@@ -76,8 +79,6 @@ public class Model extends Application implements Initializable {
 	public void onClickGToH(Event e){
 		LocalDate
 			greg = dateGreg.getValue();
-		DateTimeFormatter
-			hijri = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).withChronology(Chronology.of("Hijrah-umalqura"));
 		String
 			resultText = greg.format(hijri);
 		result.setText("The date in Hijri is: "+resultText);
@@ -101,8 +102,6 @@ public class Model extends Application implements Initializable {
 			resultText = "";
 		LocalDate
 			date = LibZwami.toGreg(zwami);
-		DateTimeFormatter
-			iso = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG);
 		resultText = date.format(iso);
 		
 		result.setText(zwami + " corresponds to " + resultText);
@@ -145,6 +144,7 @@ public class Model extends Application implements Initializable {
 		root.getChildren().stream()
 						  .filter(e -> e.getClass().getSimpleName().equals("GridPane"))
 						  .forEach(e -> panes.add((GridPane)e));
+		dateHijri.setChronology(Chronology.of("Hijrah-umalqura"));
 	}
 
 }
