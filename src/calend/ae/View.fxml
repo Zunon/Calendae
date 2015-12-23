@@ -29,7 +29,7 @@
 	</ChoiceBox>
 	
 	<GridPane GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2" fx:id="fromGreg" alignment="CENTER" hgap="10" vgap="10">
-		<Label fx:id="resultGToZ" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.rowSpan="2" GridPane.columnSpan="2"></Label>
+		<Label fx:id="resultGToZ" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"></Label>
 		<Label text="Year: " GridPane.columnIndex="0" GridPane.rowIndex="1"></Label>
 		<TextField fx:id="yearTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"></TextField>
 		<Label text="Month: " GridPane.columnIndex="0" GridPane.rowIndex="2"></Label>
